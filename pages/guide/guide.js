@@ -1,4 +1,5 @@
 // pages/guide/guide.js
+var api = require('../../tools/api')
 Page({
   //TODO 改用户的openId
   /**
@@ -142,23 +143,19 @@ Page({
    */
   upload: function(){
     var that=this
-    wx.request({
-      url: 'http://yun.iaoe.xyz/user/updateUser',
-      method:'post',
-      data:{
-        openId:'123456',
-        userInfo:that.data.userInfo,
-        target:that.data.target,
-        slogan:that.data.slogan,
-        targetTime:that.data.date
-      },
-      success: function(res){
-        console.log(res.data)
-        if(res.data.result=='success'){
-          wx.switchTab({
-            url: '/pages/index/index'
-          })
-        }
+    var data={
+      openId:api.openId,
+      userInfo:that.data.userInfo,
+      target:that.data.target,
+      slogan:that.data.slogan,
+      targetTime:that.data.date
+    }
+    api.userUpdate(data,function(res){
+      console.log(res)
+      if(res.data.result=='success'){
+        wx.switchTab({
+          url: '/pages/index/index'
+        })
       }
     })
   },

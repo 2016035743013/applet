@@ -11,10 +11,20 @@ App({
         var data = {
           "jsCode": res.code
         };
-        api.userIsCreate(data, function(res) {
+        api.userIfExist(data, function(res) {
           console.log(res);
           console.log(res.data.msg.openid);
           api.openId = res.data.msg.openid;
+          //如果用户不存在就跳到guide页面
+          if(res.data.result=='exist')
+            wx.reLaunch({
+              url: '/pages/index/index'
+            });
+          //如果用户存在就跳到index页面
+          else if(res.data.result=='notExist')
+            wx.reLaunch({
+              url: '/pages/guide/guide'
+            });
         });
       }
     })

@@ -1,0 +1,138 @@
+<view class = 'container'>
+  <scroll-view scroll-y = 'true'>
+    <view class='circle'>
+      <view></view>
+    </view>
+
+    <view class='user'>
+      Hello! {{userName}}
+    </view>
+    <view class='countDown'>
+      离考试还有10天
+    </view>
+
+    <view class='panel'>
+      <view class='left'>
+        <view>  
+          1 / 8
+        </view> 
+        <view>
+          任务完成
+        </view>
+      </view>
+      <view class='right'>
+        <view>
+          <view>{{studyTime}}</view>   分钟
+        </view>
+        <view>
+          今日学习
+        </view>
+      </view>
+    </view>
+
+    <view class='dailyWork' wx:if='{{tasks.length > 0}}'>
+      每日任务
+      <checkbox-group  bindchange='checkChange'>
+        <view class='workItem' wx:for = '{{tasks}}' >
+          <checkbox value='id'   checked='{{item.isAccomplish}}'  >
+          </checkbox>
+          <view wx:if = '{{index != showBtn}}' data-task='{{item.content}}' bindtap='startTask' catchlongtap='editAndDel' data-showbtn='{{index}}'>
+          {{item.content}}
+          </view>
+
+          <view wx:else class='editAndDelBtn'>
+              <image bindtap='del' data-type='daily' src='../../images/index/del.png' ></image>
+              <image bindtap='edit' data-type='daily' src='../../images/index/edit.png'></image>
+          </view>
+        </view>
+      </checkbox-group>
+    </view>
+
+    <view class='dailyWork2' wx:if='{{tasks2.length > 0}}'>
+      任务
+      <checkbox-group  bindchange='checkChange'>
+        <view class='workItem' wx:for = '{{tasks2}}'  data-task='{{item.content}}'>
+          <checkbox  value='diary1'   checked='{{item.isAccomplish}}'  ></checkbox>
+          <view wx:if = '{{index != showBtn2}}' data-task='{{item.content}}' bindtap='startTask' data-showbtn='{{index}}' catchlongtap='editAndDel2'>
+          {{item.content}}
+          </view>
+
+          <view wx:else class='editAndDelBtn'>
+              <image bindtap='del' data-type='work' src='../../images/index/del.png'></image>
+              <image bindtap='edit' data-type='work' src='../../images/index/edit.png'></image>
+          </view>
+
+
+        </view>
+      </checkbox-group>
+    </view>
+
+    <view class='dailyWork3' wx:if='{{task3.length > 0}}'>
+      完成任务
+      <view class='workItem' wx:for = '{{task3}}'  data-task='{{item.content}}'>
+        <checkbox  value='diary1'   checked disabled ></checkbox>
+        <view data-task='{{item.content}}'>
+        {{item.content}}
+        </view>
+      </view>
+    </view>
+    <view class='addWorkBtn'>
+      <view class='btns' wx:if = '{{showBtns}}'  >
+          <view class='camera' >
+            <view>
+              拍照识别
+            </view>
+            <view class='cameraImg' bindtap='openCamera'>
+              <image src='../../images/index/camera.png'></image>
+            </view>
+          </view>
+          <view class='dailyWorkAdd'>
+            <view>
+              每日任务
+            </view>
+            <view class='workImg' bindtap='addDailyWork'>
+              <image src='../../images/index/diaryWork.png'></image>
+            </view>
+          </view>
+          <view class='extraWork'>
+            <view>
+              任务
+            </view>
+            <view class='extraImg' bindtap='addExtraWork'>
+              <image src='../../images/index/extraWork.png'></image>
+            </view>
+          </view>
+      </view>
+      <view class='addImage' bindtap='btnsToggle'>
+        <image animation = '{{animation}}'  src='../../images/add.png'>
+        </image>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 添加和编辑的面板开始 -->
+  <view class='editAddMark' wx:if = '{{actionPanelToggle}}'>
+    <view class='actionPanel'>
+        <image bindtap='closePanel' src='../../images/close.png'></image>
+
+        <view class='taskContainer'>
+          <view>任务名称</view>
+          <view >
+            <input bindblur='taskNameBlur' value="{{taskName}}" placeholder='请输入任务名称'></input>
+          </view>
+          <view>任务备注</view>
+          <view>
+            <textarea bindblur='taskCommentBlur' value='{{taskComment}}' placeholder='请输入任务备注'>
+            
+            </textarea>
+          </view>
+          <view bindtap='submit'>
+            {{addOrEdit}}
+          </view>
+        </view>
+    </view>
+  </view>
+  <!-- 添加和编辑的面板结束 -->
+
+
+</view>

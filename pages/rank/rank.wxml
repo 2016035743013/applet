@@ -1,0 +1,55 @@
+<!-- 这是排行榜 -->
+<view class='container'>
+  <view class='mark'>
+    <view class='title'>
+      <text bindtap='clickListener' wx:for="{{rankText}}" style='font-size:{{rankTextStyle[index].fontSize}}rpx;color: {{rankTextStyle[index].color}}' wx:key='{{rankText}}' data-index = "{{index}}">
+        {{item}}
+      </text>
+    </view>
+  </view>
+  <swiper bindchange='bindchange' current='{{currentRank}}'>
+    <swiper-item wx:for="{{rankInfo}}" wx:for-item='item1' wx:for-index='index1'>
+      <view class='listPanel'>
+          <view class='myRankInfo'>
+              <view class='rankTime'>
+                {{myRankInfo[index1].time.hour}}<text class='smallText'>时</text> {{myRankInfo[index1].time.min}}<text class='smallText'>分</text>
+              </view>
+              <view class='rankImg'>
+                <image src='{{myRankInfo[index1].avatarUrl}}'></image>
+              </view>
+              <view class='rankNum'>
+                {{myRankInfo[index1].ranking}}<text class='smallText'>名</text> 
+              </view>
+          </view>
+          <scroll-view scroll-y="true" class='listInfo'>
+              <view wx:for="{{rankInfo[index1]}}" wx:for-item='item2' wx:for-index = 'index2' wx:key='{{index2}}' class='listSon'>
+                <view class='left'>
+                  <view wx:if="{{index2<=2}}" class='rankNumber'>
+                    <image src='{{cupImages[index2]}}'></image>
+                  </view>
+                  <view wx:else class='rankNumber'>
+                    {{index2+1}}
+                  </view>
+                  <view class='rankHead'>
+                    <image src='{{item2.avatarUrl}}'></image>
+                  </view>
+                  <view class='nameAndTime'>
+                      <view class='name'>
+                        {{item2.userName}}
+                      </view>
+                      <view class='time'>
+                        {{item2.time.hour}} <text >时</text>  
+                        {{item2.time.min}} <text> 分</text>
+                      </view>
+                  </view>
+                </view>
+                <view class='right'>
+                
+                </view>
+              </view>
+          </scroll-view>
+      </view>
+
+    </swiper-item>
+  </swiper>
+</view>

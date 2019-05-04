@@ -1,0 +1,322 @@
+/* pages/start/start.wxss */
+.container{
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+  width: 100%;
+  height: 100%;
+  margin:0rpx;
+  padding:0rpx;
+  background: rgb(240, 237, 237);
+}
+.container>scroll-view{
+  width: 100%;
+  height: 100%;
+}
+.circle{
+  position: absolute;
+  width: 100%;
+  top: -900rpx;
+  left: 0rpx;
+}
+.circle>view {
+  width: 1200rpx;
+  height: 1200rpx;
+  margin-left: -30%;
+  background: #5A95FF;
+  border-radius: 50%;
+}
+
+.user{
+  position:relative;
+  width: 90%;
+  height: 60rpx;
+  color: white;
+  font-size: 45rpx;
+  margin: 0 auto;
+}
+.countDown {
+  position:relative;
+  width: 90%;
+  height: 60rpx;
+  font-size: 30rpx;
+  color: #C2D5FF;
+  margin-top: 15rpx;
+  margin: 15rpx auto 0px auto;
+}
+.panel {
+  border-radius: 10rpx;
+  margin: 15rpx auto 0px auto;
+  position:relative;
+  width: 90%;
+  background: blue;
+  height: 180rpx;
+  background: white;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.11);
+  display: flex;
+  justify-content: center;
+}
+.left {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+.left>view {
+  width: 100%;
+  height: 60%;
+  color: #5A95FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60rpx;
+}
+.left>view:nth-child(2) {
+  width: 100%;
+  height: 40%;
+  color: #AAAAAA;
+  align-items: flex-start;
+  font-size: 30rpx;
+}
+.right {
+  width: 50%;
+  height: 100%;
+}
+.right>view {
+  width: 100%;
+  height: 60%;
+  color: #5A95FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40rpx;
+}
+.right>view>view {
+  margin-right: 10rpx;
+  font-size: 60rpx;
+}
+.right>view:nth-child(2) {
+  width: 100%;
+  height: 40%;
+  color: #AAAAAA;
+  align-items: flex-start;
+  font-size: 30rpx;
+}
+.dailyWork {
+  margin: 40rpx auto 0rpx auto;
+  position:relative;
+  width: 90%;
+}
+.workItem {
+  margin-top: 20rpx;
+  width: 100%;
+  background: white;
+  padding: 20rpx;
+  box-sizing: border-box;
+  color: #525252;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.11);
+  height: 100rpx;
+  display: flex;
+  border-radius: 8rpx;
+}
+.workItem>view{
+  width: 80%;
+  margin-left: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/*checkbox 整体大小  */
+checkbox {
+  width: 50rpx;
+  height: 50rpx;
+}
+/*checkbox 选项框大小  */
+checkbox .wx-checkbox-input {
+  width: 50rpx;
+  height: 50rpx;
+  border: 2px solid #5A95FF;
+  box-sizing: border-box;
+  background: white;
+}
+/*checkbox选中后样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #5A95FF;
+}
+/*checkbox选中后图标样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+.accomplish{
+  text-decoration: line-through;
+  color: #CECECE;
+}
+.dailyWork2 {
+  margin: 0 auto;
+  margin-top: 40rpx;
+  position:relative;  
+  width: 90%;
+}
+.dailyWork3{
+  margin: 0 auto;
+  margin-top: 40rpx;
+  position:relative;  
+  width: 90%;
+}
+.dailyWork3 .workItem{
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.5);
+}
+.addWorkBtn {
+  position: fixed;
+  bottom: 50rpx;
+  right: 50rpx;
+  width: 120rpx;
+  height: 120rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #5A95FF;
+  border-radius: 50%;
+  box-shadow: 0 0 15px 1px rgba(90,149,255, 0.5);
+}
+.addWorkBtn image {
+  width: 60rpx;
+  height: 60rpx;
+  position: relative;
+}
+.addImage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #5A95FF;
+  border-radius: 50%;
+}
+.addWorkBtn .btns {
+  position: absolute;
+  right: 20rpx;
+  bottom: 450rpx;
+}
+.camera, .dailyWorkAdd, .extraWork {
+  width: 300rpx;
+  /* background: pink; */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  right: 0px;
+  top: 0rpx;
+}
+.dailyWorkAdd {
+  top: 120rpx;
+}
+.extraWork {
+  top: 240rpx;
+}
+.camera>view:nth-child(1), .dailyWorkAdd>view:nth-child(1), .extraWork>view:nth-child(1) {
+  font-size: 25rpx;
+  color: white;
+  background: black;
+  margin-right: 20rpx;
+  padding: 5rpx;
+  border-radius: 5rpx;
+}
+.camera .cameraImg, .workImg, .extraImg {
+  width: 80rpx;
+  height: 80rpx;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.11);
+}
+.editAndDelBtn {
+  height: 100%;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items:center;
+}
+.editAndDelBtn>image {
+
+  width: 60rpx;
+  height: 60rpx;
+  margin-left: 25rpx;
+}
+.editAddMark {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  background: rgba(0, 0, 0, 0.11);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.actionPanel {
+  width: 80%;
+  height: 70%;
+  background: white;
+  border-radius: 10rpx;
+  position: relative;
+}
+.actionPanel>image {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+}
+.taskContainer {
+  width: 80%;
+  margin: 60rpx auto 0 auto;
+}
+.taskContainer>view {
+  margin-top: 20rpx;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 35rpx;
+}
+.taskContainer>view:nth-child(2) {
+  width: 100%;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+  background: #F7F7F7;
+}
+.taskContainer>view:nth-child(4) {
+  width: 100%;
+  box-sizing: border-box;
+  background: #F7F7F7;
+}
+.taskContainer>view:nth-child(4)>textarea {
+  width: 100%;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+}
+.taskContainer>view:nth-child(5) {
+  width: 100%;
+  height: 80rpx;
+  background: #5A95FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rpx;
+  color: white;
+  margin-top: 40rpx;
+}
+.taskContainer>view:nth-child(5):hover {
+  filter: brightness(1.1);
+}

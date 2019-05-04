@@ -1,0 +1,47 @@
+<!-- pages/store/store.wxml -->
+<view class='mineContainer'>
+  <view class='topRect'>
+    <!-- 这是顶部的蓝色矩形 -->
+  </view>
+  <view class='topCard'>
+    <image class='userImg' src='/images/head.jpg'></image>
+    <view class='userInfo'>
+      <view class='userName'>学霸模式</view>
+      <view class='coinInfo'>
+        <image class='coin' src='/images/coin.png'></image>
+        <view class='coinText'>目前金币数10</view>
+      </view>
+    </view>
+  </view>
+  <view class='goodsArea'>
+    <view class='goodsCard' bindlongtap='editAndDel'>
+      <image mode="aspectFill" class="goodsImg" src="https://ws1.sinaimg.cn/large/006bBmqIgy1g2kzzxh90ij307x05lgor.jpg">
+        <view class="goodsName haveImg" >
+          <view wx:if='{{!editAndDelShow}}'>去看一次电影</view>
+        </view>
+      </image>
+      <view class="price">
+        <image class='coin' src='/images/coin.png'></image>
+        <view class='priceText'>25金币</view>
+      </view>
+
+      <view class='panel' wx:if="{{editAndDelShow}}">
+          <view class='btns'>
+            <view bindtap='del'>
+              <image src='../../images/store/del.png'></image>
+            </view>
+            <view bindtap='editAndAdd' data-flag='1'>
+              <image src='../../images/store/edit.png'></image>
+            </view>
+          </view>
+      </view>
+
+    </view>
+  </view>
+
+
+  <view class='addBtn' bindtap='editAndAdd' data-flag='0'>
+    <image src='../../images/add.png'></image>
+  </view>
+
+</view>

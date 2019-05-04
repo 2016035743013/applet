@@ -1,0 +1,64 @@
+<!-- pages/guide/guide.wxml -->
+<view class='mineContainer'>
+    <view class='topRect'>{{ title[currentTab] }}</view>
+    <swiper duration='300' bindchange="switchTab" current="{{ currentTab }}" class='swiper_area'>
+        <!-- 1. 选择学习目标 -->
+        <swiper-item>
+            <view class="card">
+                <view class="item">
+                    <view class="title">选择你的学习目标</view>
+                    <input class="content" placeholder="点击输入或从热门目标选取" value="{{ target }}" bindblur="inputBindBlur" id="target"></input>
+                </view>
+                <view class="item">
+                    <view class="title">从热门目标选取</view>
+                    <view class="content target_area">
+                        <view class="btn target" bindtap="targetTap" wx:for="{{ targetArr }}" wx:for-index="idx" id="{{idx}}">
+                            {{ item.target }}
+                        </view>
+                    </view>
+                </view>
+                <view class="item">
+                    <view class="title">目标时间</view>
+                    <picker mode="date" value="{{date}}" start="{{date[0]}}-{{date[1]}}-{{date[2]}}" bindchange="bindDateChange">
+                        <view class="picker">
+                            <view class="content">{{date[0]}}</view>
+                            <view class="date">年</view>
+                            <view class="content">{{date[1]}}</view>
+                            <view class="date">月</view>
+                            <view class="content">{{date[2]}}</view>
+                            <view class="date">日</view>
+                        </view>
+                    </picker>
+                </view>
+                <view class="item">
+                    <button class="btn" bindtap="next">下一步</button>
+                </view>
+            </view>
+        </swiper-item>
+        <!-- 2. 输入学习口号 -->
+        <swiper-item>
+            <view class="card">
+                <view class="item">
+                    <view class="title">输入你的口号</view>
+                    <textarea class="content" placeholder="点击输入" style="width:100%" value="{{ slogan }}" bindblur="inputBindBlur" id="slogan"></textarea>
+                </view>
+                <view class="item">
+                    <button class="btn" bindtap="next">下一步</button>
+                </view>
+            </view>
+        </swiper-item>
+        <!-- 3. 授权个人信息 -->
+        <swiper-item>
+            <view class="card">
+                <view class="item">
+                    <view class="title">授权说明</view>
+                    <view class="content">可跳过授权个人信息，系统会生成默认头像和默认昵称</view>
+                </view>
+                <view class="item">
+                    <button class="btn" style="margin-top:80rpx" bindtap="submit" openType="getUserInfo">授权</button>
+                    <view class="skip" bindtap='skip'>跳过</view>
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>

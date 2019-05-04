@@ -1,0 +1,43 @@
+<!-- 添加和编辑商品 -->
+  <view class='goodAddEdit' >
+      <view class='rect'>
+      </view>
+      <view class='goodContent'>
+        <view class='topText'>
+          {{addEdit}}
+        </view>
+        <view class='bottomContent'>
+            <view class='content'>
+              <view>商品名称</view>
+              <view>
+                <input placeholder='请输入商品名称' value='{{goods}}' bindblur='getGoods'></input>
+              </view>
+              <view>商品价格</view>
+              <view>
+                  <view bindtap='add'>
+                    <image src='../../../images/store/plus.png'></image>
+                  </view>
+                  <view>
+                    <image style='margin-left: 10rpx' src='../../../images/store/coin.png'></image>
+                    X <view style='margin-left: 10rpx;color: black;'>{{coins}}</view>
+                  </view>
+                  <view bindtap='cut'>
+                    <image  src='../../../images/store/substract.png'></image>
+                  </view>
+              </view>
+              <view>
+                商品图片
+                <image bindtap='delImage' src='../../../images/index/del.png'></image>
+              </view>
+              <view  class='chooseImage' bindtap='chooseImage' >
+                  <image src='../../../images/store/plus.png' wx:if="{{imgPath == ''}}"></image>
+                  <image src='{{imageList}}' wx:else mode='aspectFill' style='width: 100%;height: 100%;'>
+                    </image>
+              </view>
+              <view bindtap='submit'>
+                {{addEditText}}
+              </view>
+            </view>  
+        </view>
+      </view>
+  </view>

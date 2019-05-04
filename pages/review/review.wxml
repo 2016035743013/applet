@@ -1,0 +1,85 @@
+<view class='review'>
+  <view class='circle'>
+    <view></view>
+  </view>
+
+  <view class='diaryAndTask'>
+    <view>
+      <view bindtap='toggle' class='{{active ? "activeClass" : "" }}' data-flag='diary'>
+        日记
+      </view>
+      <view bindtap='toggle' class='{{active ? "" : "activeClass" }}' data-flag='task' >  
+        任务
+      </view>
+    </view>
+  </view>
+
+  <view class='days'>
+      <swiper current='{{currentDays}}'>
+        <swiper-item wx:for='{{[1,2,3]}}' wx:for-index='index1' wx:key = '{{index1}}' wx:for-item = 'item1'>
+          <view class='daysContainer'>
+            <view  wx:for='{{days}}' bindtap='choseDay' wx:for-item = 'item2' wx:key = '{{index}}' class = 'day {{ choseNum == (index1 * 7 + index) ? "dayActive" : "" }}' data-choseNum = '{{index1 * 7 + index}}'>
+              <view>{{item2}}</view>
+              <view>10.15</view>
+            </view>
+          </view>
+
+        </swiper-item>
+      </swiper>
+  </view>
+
+    <!-- 日记 -->
+    
+    <swiper animation='{{animation}}' wx:if = '{{active}}' class='taskSwiper' current='{{choseNum}}' bindchange='bindchange'>
+      <swiper-item wx:key='{{index}}' wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]}}" >
+        <view class='taskContainer'>
+            <view class='title'>
+
+              <input bindblur='inputBlur' placeholder='请输入日记标题' value='彼时知我意' focus='{{index == focusIndex ? true : false}}' />
+            </view>
+            <view class='content'>
+                <textarea bindblur='textBlur' placeholder='请输入日记内容' auto-height value='发的撒啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊' style='font-size: 35rpx;'>
+                </textarea>
+            </view>
+
+            <view class='addEdit'>
+                <view data-focusIndex='{{index}}'  bindtap='addEditDiary'>
+                  <image  src='../../images/diaryAndTask/edit.png'>
+                  </image>
+                 
+                </view>
+            </view>
+        </view>
+      </swiper-item>
+    </swiper>
+
+    <swiper animation='{{animation}}' wx:else class='diarySwiper' current='{{choseNum}}' bindchange='bindchange'>
+      <swiper-item wx:key='{{index}}' wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]}}" >
+        <view class='taskContainer'>  
+          <scroll-view id='scrollView' scroll-y='true'>
+            <view class='timeItem' wx:for = "{{hours}}">
+              <view class='time' wx:if =  '{{index <= 10}}'>
+                {{item}}AM
+
+              </view>
+              <view class='time' wx:elif = '{{index == 11}}'>
+                {{item}}PM
+              </view>
+              <view class='time' wx:else>
+                {{item - 12}}PM
+              </view>
+            </view>
+
+            <view class='taskItem' wx:for='{{taskHistory}}' style='top: {{(item-1) / 24 * 150 * 24}}rpx'>
+                <!-- {{item}} -->
+                <view class='taskTitle'>完成学习任务</view>
+                <scroll-view scroll-y='true' class='taskContent'>这是一个任务的任务备注这是一个任务的任务备注这是一个任务的任务备注这是一个任务的任务备注这是一个任务的任务备注这是一个任务的任务备注这是一个任务的任务备注这是一个任务的任务备注这是一个任务的任务备注这是一个任务的任务备注这是一个任务的任务备注这是一个任务的任务备注</scroll-view>
+            </view>
+
+
+          </scroll-view>
+        </view>
+       
+      </swiper-item>
+    </swiper>
+</view>

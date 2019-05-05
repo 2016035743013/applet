@@ -59,7 +59,14 @@ function getFunction(callback) {
   }
   apiRequest(data);
 }
-
+// 获取index页面信息
+function getIndex(callback) {
+  var data = {
+    url: '/page/index?openId=' + openId,
+    callback: callback
+  }
+  apiRequest(data);
+}
 
 module.exports = {
   userIfExist,
@@ -68,6 +75,7 @@ module.exports = {
   getUserInfo,
   baseUrl,
   openId,
-  getFunction
+  getFunction,
+  getIndex
 
 } 

@@ -8,21 +8,27 @@
       Hello! {{userName}}
     </view>
     <view class='countDown'>
-      离考试还有10天
+      {{targetMsg}}
     </view>
 
     <view class='panel'>
       <view class='left'>
         <view>  
-          1 / 8
+          {{completeMsg[1]}} / {{completeMsg[0]}}
         </view> 
         <view>
           任务完成
         </view>
       </view>
       <view class='right'>
-        <view>
-          <view>{{studyTime}}</view>   分钟
+        <view >
+          <block wx:if="{{studyTime.hour==0}}">
+            <view>{{studyTime.min}}</view>   分钟
+          </block>
+          <block wx:else>
+            <view>{{studyTime.hour}}</view>   时 
+            <view style="margin-left:5rpx">{{studyTime.min}}</view>   分 
+          </block>
         </view>
         <view>
           今日学习

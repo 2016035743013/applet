@@ -1,4 +1,5 @@
 // pages/start/start.js
+var api = require('../../tools/api')
 Page({
 
   /**
@@ -12,6 +13,12 @@ Page({
     inputText: '',//输入框的值
     userName: 'cjchj',//用户名
     studyTime: 25, //今日学习的时间
+    targetMsg:'',
+    completeMsg:[0,0],
+    studyTime:{
+      hour:0,
+      min:0
+    },
     tasks: [
       { content: '我是任务我是任务我是任务我是任务我是任务我是任务我是任务我是任务我是' }, 
       { content: '我是任务' }, 
@@ -69,7 +76,7 @@ Page({
 
     
     // 跳转页面附带任务数据
-    wx.reLaunch({
+    wx.navigateTo({
       url: '/pages/taskStart/taskStart?task='+event.currentTarget.dataset.task,
     });
   },
@@ -84,6 +91,39 @@ Page({
       timingFunction: 'linear',
       transformOrigin: 'center center 0'
     });
+    //判断用户是否存在,不存在则跳到guide页面
+    wx.login({
+      success: function(res){
+        var data = {
+          "jsCode": res.code
+        };
+        api.userIfExist(data, function(res) {
+          console.log("判断用户是否存在的信息如下:")
+          console.log(res);
+          api.openId = res.data.msg.openid;
+          //如果用户存在就跳到index页面
+          if(res.data.result=='notExist')
+            wx.reLaunch({
+              url: '/pages/guide/guide'
+            });
+        });
+      }
+    })
+    //获取主页的数据
+    api.getIndex(function(res)
+    {
+      console.log("获取主页信息如下:")
+      console.log(res.data)
+      if(res.data.result=='success'){
+        var msg = res.data.msg
+        that.setData({
+          userName: msg.userName,
+          targetMsg: msg.targetMsg,
+          completeMsg: msg.completeMsg,
+          studyTime:msg.studyTime
+        })
+      }
+    })
   },
 
   // 长按每日任务进行编辑和删除

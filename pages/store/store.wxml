@@ -14,7 +14,7 @@
     </view>
   </view>
   <view class='goodsArea'>
-    <view class='goodsCard' bindlongtap='editAndDel'>
+    <view class='goodsCard' bindlongtap='editAndDel' bindtap='showBuy'>
       <image mode="aspectFill" class="goodsImg" src="https://ws1.sinaimg.cn/large/006bBmqIgy1g2kzzxh90ij307x05lgor.jpg">
         <view class="goodsName haveImg" >
           <view wx:if='{{!editAndDelShow}}'>去看一次电影</view>
@@ -42,6 +42,19 @@
 
   <view class='addBtn' bindtap='editAndAdd' data-flag='0'>
     <image src='../../images/add.png'></image>
+  </view>
+
+  <!-- 购买页面 -->
+  <view wx:if="{{showBuy}}" class="showBuyArea">
+    <view class="showBuyCard">
+      <image class="buyImg" >
+        <view class="goodsName haveImg" >
+            <view>去看一次电影</view>
+            <view>20</view>
+        </view>
+      </image>
+      <button>长按购买</button>
+    </view>
   </view>
 
 </view>

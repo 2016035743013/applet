@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    hello:'',
+    showBuy:false,
     addEditShow: false,//编辑和添加面板的显示和隐藏
     editAndDelShow: true,//编辑和删除按钮面板的显示和隐藏
   },
@@ -14,6 +15,12 @@ Page({
   editAndDel: function() {
     this.setData({
       editAndDelShow: !this.data.editAndDelShow
+    })
+  },
+
+  showBuy: function(){
+    this.setData({
+      showBuy:true
     })
   },
 
@@ -49,7 +56,7 @@ Page({
       urls: this.data.imageList
     })
   },
-  
+
 
 
   /**

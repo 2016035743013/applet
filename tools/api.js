@@ -15,19 +15,19 @@ function apiRequest(option) {
 }
 
 // 判断用户是否已经创建了
-function userIsCreate(option, callback) {
+function userIfExist(option, callback) {
   var data = {
     data: option,
-    url: '/user/userOrCreate',
+    url: '/user/userIfExist',
     callback: callback
   }
   apiRequest(data);
 }
 
 // 用户登录判断是否已经存在需要请求这个接口   用户更改信息也需要这个接口
-function userUpdate(callback) {
+function userUpdate(data,callback) {
   var data = {
-    data: { openId: openId },
+    data: data,
     url: '/user/updateUser',
     callback: callback
   }
@@ -59,15 +59,23 @@ function getFunction(callback) {
   }
   apiRequest(data);
 }
-
+// 获取index页面信息
+function getIndex(callback) {
+  var data = {
+    url: '/page/index?openId=' + openId,
+    callback: callback
+  }
+  apiRequest(data);
+}
 
 module.exports = {
-  userIsCreate,
+  userIfExist,
   userUpdate,
   getRank,
   getUserInfo,
   baseUrl,
   openId,
-  getFunction
+  getFunction,
+  getIndex
 
 } 

@@ -5,19 +5,7 @@ App({
   onLaunch: function () {
     // tools.test();
     
-    wx.login({
-      success: function(res){
 
-        var data = {
-          "jsCode": res.code
-        };
-        api.userIsCreate(data, function(res) {
-          console.log(res);
-          console.log(res.data.msg.openid);
-          api.openId = res.data.msg.openid;
-        });
-      }
-    })
     // 登录
     wx.login({
       success: res => {
